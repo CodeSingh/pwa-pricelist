@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
         <meta charset="utf-8">
-        <link rel="manifest" href="/pwa=pricesheet/manifest.json">
+        <link rel="manifest" href="/pwa-pricesheet/manifest.json">
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -108,7 +108,7 @@
     <script>
         if('serviceWorker' in navigator) {
           navigator.serviceWorker
-                   .register('/pwa=pricesheet/sw.js')
+                   .register('/pwa-pricesheet/sw.js')
                    .then(function() { console.log("Service Worker Registered"); });
         }
     </script>
