@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <link rel="manifest" href="/manifest.json">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Price List">
+        <meta name="apple-mobile-web-app-title" content="Price List">
+        <meta name="theme-color" content="#FFA500">
+        <meta name="msapplication-navbutton-color" content="#FFA500">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-starturl" content="/index.html">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="icon" type="image/png" sizes="192x192" href="PriceList.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="PriceList.png">
+
+        <title>Price List</title>
+        <link rel="stylesheet" type="text/css" href="index.css" media="all">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <h1 class='vertical-container'>Price List</h1>
+    <div>
+        <div id='app'>
+
+
+            <h2>Type</h2>
+            <label for='samosa'>Samosa</label>
+            <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
+            <label for='springroll'>Spring roll</label>
+            <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
+            <br>
+            <span>Food type: {{ foodtype }}</span><br />
+            <label for="tbprice">Price:</label>
+            <input enabled="false" v-model="unitprice" placeholder="Choose a food type" name="tbprice" id="tbprice"><br />
+            <label for="tbqty">Qty:</label>
+            <input type="number" v-model="qty" placeholder="Choose a food type" name="tbqty" id="tbqty"> <br />    
+            <label for="tbtotal">Total:</label>
+            <input type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal"><br />
+            <button id="tbAdd" @click="addLine">Add</button>
+            <div id="orderdetails">
+                <ul id="order">
+                    <li v-for="(line, index) in order">
+                        {{ line.foodtype }}, {{line.qty}} = {{line.total}} <button @click="delLine(index)">X</button>
+                    </li>
+                </ul>
+                <h1 v-if="orderTotal > 0">{{orderTotal}}</h1>
+            </div>
+        </div>
+    </div>
+
+  </body>
+  <script>
+      
+      var app = new Vue({
+        el: '#app',
+        data: {
+          foodtype: '',
+          unitprice: 0,
+          qty: 1,
+          order: []          
+        },
+        methods: {
+            setPrice: function () {
+                alert(this.unitprice);
+                switch(this.foodtype){
+                    case 'samosa':
+                        this.unitprice = 0.3;
+                        break;
+                    case 'springroll':
+                        this.unitprice = 0.2;
+                        break;
+                }
+                alert(this.unitprice);
+            },
+            addLine: function(){
+                console.log(this.order);
+                this.order.push({foodtype: this.foodtype, unitprice: this.unitprice, qty: this.qty, total: this.total });
+                this.resetLines();
+            },
+            delLine: function(_index){
+                console.log(this.order);
+                this.order.splice(_index, 1)
+                this.resetLines();
+            },
+            resetLines: function(){
+                this.foodtype = '';
+                this.unitprice = 0;
+                this.qty = 1;
+            }
+        },
+        computed:{
+            // a computed getter
+            total: function () {
+                // `this` points to the vm instance
+                return this.unitprice * this.qty;
+            },
+            orderTotal: function(){
+                return this.order.reduce((acc, item) => acc + item.total, 0);
+            }
+        }
+    });
+    </script>
+</html>
+
