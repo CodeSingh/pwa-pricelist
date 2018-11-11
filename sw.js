@@ -1,13 +1,13 @@
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('pwa-lricesheet').then(function(cache) {
+   caches.open('pwa-pricesheet').then(function(cache) {
      return cache.addAll([
-       '/',
-       '/index.html',
-       '/index.css',
-       '/manifest.json',
-       '/PriceList.png',
-       '/vue.js'
+       '/pwa-pricesheet/',
+       '/pwa-pricesheet/index.html',
+       '/pwa-pricesheet/index.css',
+       '/pwa-pricesheet/manifest.json',
+       '/pwa-pricesheet/PriceList.png',
+       '/pwa-pricesheet/vue.js'
      ]);
    })
  );
