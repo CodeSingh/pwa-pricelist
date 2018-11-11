@@ -2,7 +2,7 @@
     "name": "Price List",
     "short_name": "Price List",
     "lang": "en-US",
-    "start_url": "/index.html",
+    "start_url": "/pwa-pricesheet/index.html",
     "display": "standalone",
     "theme_color": "#FFA500",
     "icons": [
