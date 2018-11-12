@@ -4,6 +4,7 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/pwa-pricesheet/',
        '/pwa-pricesheet/index.html',
+       '/pwa-pricesheet/bulma.min.css',
        '/pwa-pricesheet/index.css',
        '/pwa-pricesheet/manifest.json',
        '/pwa-pricesheet/PriceList.png',
