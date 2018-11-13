@@ -35,22 +35,26 @@
                 </div>
             </div>
 
-            <div class="control">
-                <label class="radio">
-                    <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
-                  Samosa
-                </label>
-                <label class="radio">
-                    <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
-                  Spring roll
-                </label>
-            </div>
-
             <div class="field">
                 <div class='control'>
                     <span>Food type: {{ foodtype }}</span><br />
                 </div>
             </div>
+
+            <div class="field is-grouped is-grouped-centered">
+                <div class='control'>
+                    <label class="radio">
+                        <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
+                        Samosa
+                    </label>
+                    <label class="radio">
+                        <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
+                        Spring roll
+                    </label>
+                </div>
+            </div>
+
+
 
             <div class='field'>
                 <label for="tbprice">Price:</label>
