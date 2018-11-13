@@ -35,18 +35,15 @@
                 </div>
             </div>
 
-            <div class="field">
-                    <label for='samosa'>Samosa</label>
-                    <div class='control'>
-                            <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
-                    </div>
-            </div>
-
-            <div class="field">
-                    <label for='springroll'>Spring roll</label>
-                    <div class='control'>
-                            <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
-                    </div>
+            <div class="control">
+                <label class="radio">
+                    <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
+                  Samosa
+                </label>
+                <label class="radio">
+                    <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
+                  Spring roll
+                </label>
             </div>
 
             <div class="field">
