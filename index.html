@@ -34,47 +34,44 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class='section'>
-                <div class="field">
-                        <label for='samosa'>Samosa</label>
-                        <div class='control'>
-                                <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
-                        </div>
-                </div>
-
-                <div class="field">
-                        <label for='springroll'>Spring roll</label>
-                        <div class='control'>
-                                <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
-                        </div>
-                </div>
-
-                <div class="field">
+            <div class="field">
+                    <label for='samosa'>Samosa</label>
                     <div class='control'>
-                        <span>Food type: {{ foodtype }}</span><br />
+                            <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
                     </div>
-                </div>
+            </div>
 
-                <div class='field'>
-                    <label for="tbprice">Price:</label>
+            <div class="field">
+                    <label for='springroll'>Spring roll</label>
                     <div class='control'>
-                        <input class='input' enabled="false" v-model="unitprice" placeholder="Choose a food type" name="tbprice" id="tbprice"><br />
+                            <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
                     </div>
+            </div>
+
+            <div class="field">
+                <div class='control'>
+                    <span>Food type: {{ foodtype }}</span><br />
                 </div>
-                <div class='field'>
-                    <label for="tbqty">Qty:</label>
-                    <input class='input' type="number" v-model="qty" placeholder="Choose a food type" name="tbqty" id="tbqty"> <br />    
+            </div>
+
+            <div class='field'>
+                <label for="tbprice">Price:</label>
+                <div class='control'>
+                    <input class='input' enabled="false" v-model="unitprice" placeholder="Choose a food type" name="tbprice" id="tbprice"><br />
                 </div>
-                <div class='field'>
-                    <label for="tbtotal">Total:</label>
-                    <input class='input' type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal"><br />
-                </div>
-                <div class='field'>
-                    <button id="tbAdd" class='button is-primary' @click="addLine">Add</button>
-                </div>
-            
+            </div>
+            <div class='field'>
+                <label for="tbqty">Qty:</label>
+                <input class='input' type="number" v-model="qty" placeholder="Choose a food type" name="tbqty" id="tbqty"> <br />    
+            </div>
+            <div class='field'>
+                <label for="tbtotal">Total:</label>
+                <input class='input' type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal"><br />
+            </div>
+            <div class='field'>
+                <button id="tbAdd" class='button is-primary' @click="addLine">Add</button>
+            </div>
         </div>
         <div id="orderdetails">
             <ul id="order">
