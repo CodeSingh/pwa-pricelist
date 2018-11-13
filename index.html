@@ -70,20 +70,36 @@
             </div>
 
             <div class='field'>
-                <button id="tbAdd" class='button is-primary' @click="addLine">Add</button>
+                <button id="tbAdd" class='button is-primary is-fullwidth is-large' @click="addLine">Add</button>
             </div>
+
+            <div id="orderdetails">
+                <div class='columns' >
+                    <div class='column' v-for="(line, index) in order">
+
+                        <div class='box'>                    
+                            <button class='delete is-large' @click='delLine' >X</button>
+
+                            <article class="media">
+
+                                <div class="media-content">
+                                    <div class="content">
+                                        <strong>{{ line.foodtype }}</strong> x <strong>{{line.qty}}</strong><br>
+                                        Total: {{line.total}}
+                                </div>
+                            </div>
+                        </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div id="orderdetails">
-            <ul id="order">
-                <li v-for="(line, index) in order">
-                    {{ line.foodtype }}, {{line.qty}} = {{line.total}} <button @click="delLine(index)">X</button>
-                </li>
-            </ul>
-        </div>
+
 
         <footer class="footer">
             <div class="content has-text-centered">
-                <h1 v-if="orderTotal > 0">{{orderTotal}}</h1>
+                <h1 v-if="orderTotal > 0">Total: {{orderTotal}}</h1>
             </div>
         </footer>
     </div>
