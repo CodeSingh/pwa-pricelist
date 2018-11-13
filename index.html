@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
                     <span>Food type: {{ foodtype }}</span><br />
                 </div>
@@ -43,33 +43,32 @@
 
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
-                    <label class="radio">
+                    <label class='radio'>
                         <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
                         Samosa
                     </label>
-                    <label class="radio">
+                    <label class='radio'>
                         <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
                         Spring roll
                     </label>
                 </div>
             </div>
 
-
-
-            <div class='field'>
-                <label for="tbprice">Price:</label>
-                <div class='control'>
-                    <input class='input' enabled="false" v-model="unitprice" placeholder="Choose a food type" name="tbprice" id="tbprice"><br />
+            <div class="columns is-mobile">
+                <div class="column">
+                    <label for="tbprice">Price:</label>
+                    <input class='input is-large' enabled="false" v-model="unitprice" placeholder="Price" name="tbprice" id="tbprice">
+                </div>
+                <div class="column">
+                    <label for="tbqty">Qty:</label>
+                    <input class='input is-large' type="number" v-model="qty" placeholder="Qty" name="tbqty" id="tbqty">
+                </div>
+                <div class="column">
+                    <label for="tbtotal">Total:</label>
+                    <input class='input is-large' type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal">
                 </div>
             </div>
-            <div class='field'>
-                <label for="tbqty">Qty:</label>
-                <input class='input' type="number" v-model="qty" placeholder="Choose a food type" name="tbqty" id="tbqty"> <br />    
-            </div>
-            <div class='field'>
-                <label for="tbtotal">Total:</label>
-                <input class='input' type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal"><br />
-            </div>
+
             <div class='field'>
                 <button id="tbAdd" class='button is-primary' @click="addLine">Add</button>
             </div>
