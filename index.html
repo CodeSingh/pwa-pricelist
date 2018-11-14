@@ -46,14 +46,7 @@
                 
             </div>
         </nav>
-                <div class="section">
-
-            <div class="field is-grouped is-grouped-centered">
-                <div class='control'>
-                    <span>Food type: {{ foodtype }}</span><br />
-                </div>
-            </div>
-
+        <div class="container">
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
                     <label class='radio'>
@@ -69,6 +62,7 @@
 
             <div class="columns is-mobile">
                 <div class="column">
+                    
                     <label for="tbprice">Price:</label>
                     <input class='input is-large' enabled="false" v-model="unitprice" placeholder="Price" name="tbprice" id="tbprice">
                 </div>
@@ -83,7 +77,7 @@
             </div>
 
             <div class='field'>
-                <button id="tbAdd" class='button is-primary is-fullwidth is-large' @click="addLine">Add</button>
+                <button id="tbAdd" class='button is-success is-fullwidth is-large' @click="addLine">Add</button>
             </div>
 
             <div id="orderdetails">
