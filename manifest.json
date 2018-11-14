@@ -1,6 +1,6 @@
 {
-    "name": "Price List",
-    "short_name": "Price List",
+    "name": "Price Sheet",
+    "short_name": "Price Sheet",
     "lang": "en-US",
     "start_url": "/pwa-pricesheet/index.html",
     "display": "standalone",

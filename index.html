@@ -24,15 +24,29 @@
 </head>
 <body>
     <div id='app'>
-        <div class="section">
-                <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-                    <a class="navbar-item" href="#">
-                        <img src='PriceList.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
-                    </a>
-
-                    <a href='#' class="navbar-item">Price Sheet</a>
-                    <div class='navbar-end navbar-item is-size-4' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</div>
-                </nav>
+        <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+            <div class="navbar-start">
+                <!--<a class="navbar-item" href="#">
+                    <img src='PriceList.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
+                    Price Sheet
+                </a>-->
+                <div class="navbar-item">
+                        <div class="field is-grouped">
+                            <p class='control'>
+                                <img src='PriceList.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
+                            </p>
+                          <p class='control'>
+                              <span class='is-size-5'>Price sheet</span>
+                          </p>
+                          <p class="control">
+                        <span class='is-size-5' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</span>
+                          </p>
+                        </div>
+                      </div>
+                
+            </div>
+        </nav>
+                <div class="section">
 
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
@@ -43,11 +57,11 @@
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
                     <label class='radio'>
-                        <input type='radio' name='foodtype' id='samosa' value='Samosa' v-model='foodtype' @change='unitprice = 0.3'>
+                        <input type='radio' name='foodtype' id='samosa' value='samosa' v-model='foodtype' @change='setPrice'>
                         Samosa
                     </label>
                     <label class='radio'>
-                        <input type='radio' name='foodtype' id='springroll' value='Spring roll' v-model='foodtype' @change='unitprice = 0.35'>
+                        <input type='radio' name='foodtype' id='springroll' value='springroll' v-model='foodtype' @change='setPrice'>
                         Spring roll
                     </label>
                 </div>
@@ -113,21 +127,19 @@
     data: {
         foodtype: '',
         unitprice: 0,
-        qty: 1,
-        order: []          
+        qty: null,
+        order: []        
     },
     methods: {
         setPrice: function () {
-            alert(this.unitprice);
             switch(this.foodtype){
                 case 'samosa':
                     this.unitprice = 0.3;
                     break;
                 case 'springroll':
-                    this.unitprice = 0.2;
+                    this.unitprice = 0.35;
                     break;
             }
-            alert(this.unitprice);
         },
         addLine: function(){
             console.log(this.order);
