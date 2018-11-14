@@ -30,7 +30,8 @@
                         <img src='PriceList.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
                     </a>
 
-                    <a href='#' class="navbar-item"><strong>Price Sheet</strong></a>
+                    <a href='#' class="navbar-item">Price Sheet</a>
+                    <div class='navbar-end navbar-item is-size-4' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</div>
                 </nav>
 
             <div class="field is-grouped is-grouped-centered">
@@ -82,8 +83,8 @@
 
                                 <div class="media-content">
                                     <div class="content">
-                                        <strong>{{ line.foodtype }}</strong> x <strong>{{line.qty}}</strong><br>
-                                        Total: {{line.total}}
+                                        <strong>{{ line.foodtype }}</strong> x <strong class='is-italic'>{{line.qty}}</strong><br>
+                                        <span class='is-size-4'>{{line.total | currency}}</span>
                                 </div>
                             </div>
                         </article>
@@ -97,12 +98,16 @@
 
         <footer class="footer">
             <div class="content has-text-centered">
-                <h1 v-if="orderTotal > 0">Total: {{orderTotal}}</h1>
+                <h1 v-if="orderTotal > 0">Total: {{orderTotal | currency}}</h1>
             </div>
         </footer>
     </div>
 </body>
 <script>
+    Vue.filter('currency', function (value) {
+        return '£' + parseFloat(value).toFixed(2);
+    });
+
     var app = new Vue({
     el: '#app',
     data: {
