@@ -46,7 +46,7 @@
                 
             </div>
         </nav>
-        <div class="container">
+        <div class="section">
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
                     <label class='radio'>
@@ -62,17 +62,18 @@
 
             <div class="columns is-mobile">
                 <div class="column">
-                    
-                    <label for="tbprice">Price:</label>
-                    <input class='input is-large' enabled="false" v-model="unitprice" placeholder="Price" name="tbprice" id="tbprice">
-                </div>
-                <div class="column">
                     <label for="tbqty">Qty:</label>
                     <input class='input is-large' type="number" v-model="qty" placeholder="Qty" name="tbqty" id="tbqty">
                 </div>
                 <div class="column">
-                    <label for="tbtotal">Total:</label>
-                    <input class='input is-large' type="number" v-model="total" placeholder="Choose a food type" name="tbtotal" id="tbtotal">
+                    
+                    <span class="heading">Price</span>
+                    <span class='title'>{{unitprice | currency}}</span> 
+                </div>
+
+                <div class="column">
+                    <span class="heading">Total</span>
+                    <span class='title'>{{total | currency}}</span> 
                 </div>
             </div>
 
@@ -148,7 +149,7 @@
         resetLines: function(){
             this.foodtype = '';
             this.unitprice = 0;
-            this.qty = 1;
+            this.qty = '';
         }
     },
     computed:{
