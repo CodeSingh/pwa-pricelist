@@ -1,6 +1,8 @@
+var CACHE_NAME = 'pwa-pricesheetv2';
+
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('pwa-pricesheet').then(function(cache) {
+   caches.open(CACHE_NAME).then(function(cache) {
      return cache.addAll([
        '/pwa-pricesheet/',
        '/pwa-pricesheet/index.html',
