@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="columns is-mobile">
+            <div class="columns is-mobile" v-if='foodtype != ""'>
                 <div class="column">
                     <label for="tbqty">Qty:</label>
                     <input class='input is-large' type="number" v-model="qty" placeholder="Qty" name="tbqty" id="tbqty">
@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <div class='field'>
+            <div class='field' v-if='foodtype != ""'>
                 <button id="tbAdd" class='button is-success is-fullwidth is-large' @click="addLine">Add</button>
             </div>
 
@@ -94,6 +94,7 @@
                                     <div class="content">
                                         <strong>{{ line.foodtype }}</strong> x <strong class='is-italic'>{{line.qty}}</strong><br>
                                         <span class='is-size-4'>{{line.total | currency}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -103,13 +104,6 @@
             </div>
 
         </div>
-
-
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <h1 v-if="orderTotal > 0">Total: {{orderTotal | currency}}</h1>
-            </div>
-        </footer>
     </div>
 </body>
 <script>
