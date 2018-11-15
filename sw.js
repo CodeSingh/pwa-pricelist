@@ -1,4 +1,5 @@
-var CACHE_NAME = 'pwa-pricesheetv2';
+var GENERAL_CACHE_NAME = 'pwa-pricesheet'
+var CACHE_NAME = GENERAL_CACHE_NAME + 'v2';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
@@ -17,9 +18,24 @@ self.addEventListener('install', function(e) {
 });
 
 self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request).then(function(response) {
-        return response || new Response("Nothing in the cache for this request");
-      })
-    );
-  });
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || new Response("Nothing in the cache for this request");
+    })
+  );
+});
+
+// Remove old cache
+self.addEventListener("activate", function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (CACHE_NAME !== cacheName &&  cacheName.startsWith(GENERAL_CACHE_NAME)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
