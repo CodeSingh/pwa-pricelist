@@ -45,13 +45,9 @@
         <div class="section">
             <div class="field is-grouped is-grouped-centered">
                 <div class='control'>
-                    <label class='radio'>
-                        <input type='radio' name='foodtype' id='samosa' value='samosa' v-model='foodtype' @change='setPrice'>
-                        Samosa
-                    </label>
-                    <label class='radio'>
-                        <input type='radio' name='foodtype' id='springroll' value='springroll' v-model='foodtype' @change='setPrice'>
-                        Spring roll
+                    <label class='radio' v-for='food in foodtypes'>
+                        <input type='radio' name='foodtype' v-bind:id="food.id" v-bind:value="food.id" v-model='foodtype' @change='setPrice'>
+                        {{food.name}}
                     </label>
                 </div>
             </div>
@@ -63,7 +59,7 @@
                 <div class="column">
                     
                     <span class="heading">Price</span>
-                    <span class='title'>{{unitprice | currency}}</span> 
+                    <span class='title'>{{selectedFoodType.unitprice | currency}}</span> 
                 </div>
 
                 <div class="column">
@@ -109,25 +105,27 @@
     var app = new Vue({
     el: '#app',
     data: {
+        selectedFoodType: null,
         foodtype: '',
         unitprice: 0,
         qty: null,
-        order: []        
+        order: [],
+        foodtypes: [
+            {id: 'samosa', name: 'Samosa', unitprice: 0.3},
+            {id: 'springroll', name: 'Spring roll', unitprice: 0.35}   
+        ]       
     },
     methods: {
         setPrice: function () {
-            switch(this.foodtype){
-                case 'samosa':
-                    this.unitprice = 0.3;
-                    break;
-                case 'springroll':
-                    this.unitprice = 0.35;
-                    break;
+            for (var i = 0; i < this.foodtypes.length; i++) {
+                if (this.foodtypes[i]['id'] === this.foodtype) {
+                    this.selectedFoodType = this.foodtypes[i];
             }
+    }
         },
         addLine: function(){
             console.log(this.order);
-            this.order.push({foodtype: this.foodtype, unitprice: this.unitprice, qty: this.qty, total: this.total });
+            this.order.push({foodtype: this.selectedFoodType.name, unitprice: this.selectedFoodType.unitprice, qty: this.qty, total: this.total });
             this.resetLines();
         },
         delLine: function(_index){
@@ -139,13 +137,14 @@
             this.foodtype = '';
             this.unitprice = 0;
             this.qty = '';
+            this.selectedFoodType = null;
         }
     },
     computed:{
         // a computed getter
         total: function () {
             // `this` points to the vm instance
-            return this.unitprice * this.qty;
+            return this.selectedFoodType.unitprice * this.qty;
         },
         orderTotal: function(){
             return this.order.reduce((acc, item) => acc + item.total, 0);
