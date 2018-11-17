@@ -35,7 +35,7 @@
                             <span class='is-size-5'>Price sheet</span>
                         </p>
                         <p class="control">
-                            <span class='is-size-5' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</span>
+                            <span @click='share' class='is-size-5' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</span>
                         </p>
                     </div>
                 </div>
@@ -111,17 +111,31 @@
         qty: null,
         order: [],
         foodtypes: [
-            {id: 'samosa', name: 'Samosa', unitprice: 0.3},
-            {id: 'springroll', name: 'Spring roll', unitprice: 0.35}   
+            {id: 'samosa', name: 'ਸਮੋਸਾ', unitprice: 0.3},
+            {id: 'springroll', name: 'ਸਪਰਿੰਗ ਰੋਲ', unitprice: 0.35},
+            {id: 'pakora', name: 'ਪਕੌਰਾ', unitprice: 1.00}
         ]       
     },
     methods: {
+        share: function(){
+            var text = 'Add text to share with the URL';
+            if ('share' in navigator) {
+                navigator.share({
+                    title: this.orderTotal,
+                    text: text,
+                    url: location.href,
+                })
+            }
+            else{
+                alert('Share not available');
+            }
+        },
         setPrice: function () {
             for (var i = 0; i < this.foodtypes.length; i++) {
                 if (this.foodtypes[i]['id'] === this.foodtype) {
                     this.selectedFoodType = this.foodtypes[i];
+                }
             }
-    }
         },
         addLine: function(){
             console.log(this.order);
