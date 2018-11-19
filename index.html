@@ -124,7 +124,7 @@
 
             if ('share' in navigator) {
                 navigator.share({
-                    title: this.orderTotal,
+                    title: 'Price Sheet Total: ' + this.orderTotal,
                     text: this.shareText,
                     url: location.href
                 })
