@@ -117,16 +117,31 @@
             {id: 'samosa', name: 'ਸਮੋਸਾ', unitprice: 0.3},
             {id: 'springroll', name: 'ਸਪਰਿੰਗ ਰੋਲ', unitprice: 0.35},
             {id: 'pakora', name: 'ਪਕੌਰਾ', unitprice: 6.00}
-        ]       
+        ]     
     },
     methods: {
+        getOrderList: function(){
+            
+            var txt = '';
+
+            order.forEach(line => {
+                txt += line.foodtype + 'x' + line.qty + ' = ' + line.total + "\n"
+            });
+            
+            txt += 'Total: ' + this.orderTotal;
+
+            return txt;
+        },
         share: function(){
-            var text = 'Add text to share with the URL';
+            var text = 'Your selected items are shown:\n';
+
+            text += getOrderList();
+
             if ('share' in navigator) {
                 navigator.share({
                     title: this.orderTotal,
                     text: text,
-                    url: location.href,
+                    //url: location.href,
                 })
             }
             else{
