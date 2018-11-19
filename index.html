@@ -130,7 +130,7 @@
                 })
             }
             else{
-                alert('Share not available for order');
+                alert('Share not available for order: ' + this.shareText);
             }
         },
         setPrice: function () {
@@ -169,7 +169,7 @@
         shareText: function(){
             var txt = 'Your selected items are shown:\n';
 
-            order.forEach(line => {
+            this.order.forEach(line => {
                 txt += line.foodtype + 'x' + line.qty + ' = ' + line.total + "\n"
             });
 
