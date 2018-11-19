@@ -125,12 +125,12 @@
             if ('share' in navigator) {
                 navigator.share({
                     title: this.orderTotal,
-                    text: this.shareText,
+                    text: this.shareText
                     //url: location.href,
                 })
             }
             else{
-                alert('Share not available');
+                alert('Share not available for order');
             }
         },
         setPrice: function () {
