@@ -1,5 +1,5 @@
 var GENERAL_CACHE_NAME = 'pwa-pricesheet'
-var CACHE_NAME = GENERAL_CACHE_NAME + 'v7';
+var CACHE_NAME = GENERAL_CACHE_NAME + 'v8';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
@@ -10,7 +10,8 @@ self.addEventListener('install', function(e) {
        '/pwa-pricesheet/bulma.min.css',
        '/pwa-pricesheet/index.css',
        '/pwa-pricesheet/manifest.json',
-       '/pwa-pricesheet/PriceList.png',
+       '/pwa-pricesheet/PriceSheet.png',
+       '/pwa-pricesheet/share.png',
        '/pwa-pricesheet/vue.js'
      ]);
    })

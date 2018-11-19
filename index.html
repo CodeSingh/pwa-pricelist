@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="PriceList.png">
     <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="PriceList.png">
 
-    <title>Price List</title>
+    <title>Price Sheet</title>
     <link rel="stylesheet" type="text/css" href="bulma.min.css" media="all">
     <link rel="stylesheet" type="text/css" href="index.css" media="all">
     <script src="vue.js"></script>
@@ -29,13 +29,16 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class='control'>
-                            <img src='PriceList.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
+                            <img src='PriceSheet.png' alt="PriceSheet: Get totals for samosa and spring roll sales">
                         </p>
                         <p class='control'>
                             <span class='is-size-5'>Price sheet</span>
                         </p>
                         <p class="control">
-                            <span @click='share' class='is-size-5' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</span>
+                            <span class='is-size-5' v-if="orderTotal > 0">Total: {{orderTotal | currency}}</span>
+                        </p>
+                        <p class="control">
+                            <img v-if='orderTotal > 0' @click='share' src='share.png' height='10px' />
                         </p>
                     </div>
                 </div>
@@ -113,7 +116,7 @@
         foodtypes: [
             {id: 'samosa', name: 'ਸਮੋਸਾ', unitprice: 0.3},
             {id: 'springroll', name: 'ਸਪਰਿੰਗ ਰੋਲ', unitprice: 0.35},
-            {id: 'pakora', name: 'ਪਕੌਰਾ', unitprice: 1.00}
+            {id: 'pakora', name: 'ਪਕੌਰਾ', unitprice: 6.00}
         ]       
     },
     methods: {
