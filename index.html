@@ -125,8 +125,8 @@
             if ('share' in navigator) {
                 navigator.share({
                     title: this.orderTotal,
-                    text: this.shareText
-                    //url: location.href,
+                    text: this.shareText,
+                    url: location.href
                 })
             }
             else{
@@ -170,7 +170,7 @@
             var txt = 'Your selected items are shown:\n';
 
             this.order.forEach(line => {
-                txt += line.foodtype + 'x' + line.qty + ' = ' + line.total + "\n"
+                txt += line.foodtype + ' x ' + line.qty + ' = ' + line.total  + "\n"
             });
 
             txt += 'Total: ' + this.orderTotal;
