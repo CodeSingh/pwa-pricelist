@@ -1,5 +1,5 @@
 var GENERAL_CACHE_NAME = 'pwa-pricesheet'
-var CACHE_NAME = GENERAL_CACHE_NAME + 'v14';
+var CACHE_NAME = GENERAL_CACHE_NAME + 'v15';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
